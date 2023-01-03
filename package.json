@@ -2,7 +2,7 @@
     "name": "implementation-lens",
     "displayName": "Implementation Lens",
     "description": "show interface implementation code lens",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "ctf0",
     "engines": {
         "vscode": "^1.68.0"
@@ -36,16 +36,16 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run esbuild-base -- --minify",
+        "vscode:prepublish": "npm run esbuild-base -- --pure:console.log --minify",
         "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
         "esbuild": "npm run esbuild-base -- --sourcemap",
         "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
-        "watch": "npm run vscode:prepublish"
+        "watch": "npm run esbuild"
     },
     "devDependencies": {
-        "@types/node": "^18.11.17",
+        "@types/node": "^18.11.18",
         "@types/vscode": "^1.68.0",
-        "esbuild": "^0.16.9",
+        "esbuild": "^0.17.3",
         "typescript": "^4.9.4"
     }
 }
